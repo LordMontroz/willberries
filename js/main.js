@@ -23,18 +23,28 @@ const closeModal = function () {
 buttonCart.addEventListener("click", openModal);
 modalClose.addEventListener("click", closeModal);
 
-// scroll smooth
-(function() {
-	const scrollLinks = document.querySelectorAll("a.scroll-link");
+modalCart.addEventListener("click", (event) => {
+  const target = event.target;
+  if (
+    event.target.classList.contains("overlay") ||
+    target.classList.contains("modal-close")
+  ) {
+    closeModal();
+  }
+});
 
-for (let i = 0; i < scrollLinks.length; i++) {
-  scrollLinks[i].addEventListener("click", function (event) {
-	event.preventDefault();
-    const id = scrollLinks[i].getAttribute("href");
-	document.querySelector(id).scrollIntoView({
-		behavior: 'smooth',
-		block: 'start'
-	})
-  });
-}
-})()
+// scroll smooth
+(function () {
+  const scrollLinks = document.querySelectorAll("a.scroll-link");
+
+  for (let i = 0; i < scrollLinks.length; i++) {
+    scrollLinks[i].addEventListener("click", function (event) {
+      event.preventDefault();
+      const id = scrollLinks[i].getAttribute("href");
+      document.querySelector(id).scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  }
+})();
