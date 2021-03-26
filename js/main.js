@@ -48,3 +48,45 @@ modalCart.addEventListener("click", (event) => {
     });
   }
 })();
+
+// goods
+
+const more = document.querySelector(".more");
+const navigationItem = document.querySelectorAll("navigation-item");
+const longGoodsList = document.querySelector("long-goods-list");
+
+const getGoods = async function () {
+  const result = await fetch("db/db.json");
+  if (!result.ok) {
+    throw "Ошибочка вышла: " + result.status;
+  }
+  return await result.json();
+};
+
+const createCard = function (objCard) {
+  const card = document.createElement("div");
+  card.className = "col-lg-3 col-sm-6";
+
+  card.innerHTML = ` 
+        <div class="goods-card">
+					<span class="label">New</span>
+				<img src="img/image-120.jpg" alt="image: Faded Beach Trousers" class="goods-image">
+					<h3 class="goods-title">Faded Beach Trousers</h3>
+					<p class="goods-description">Navy/Ochre/Black/Khaki</p>
+					<button class="button goods-card-btn add-to-cart" data-id="011">
+						<span class="button-price">$139</span>
+					</button>
+				</div>
+                `;
+
+
+  return card;
+};
+
+const renderCards = function (data) {
+
+  longGoodsList.textContent = "";
+  
+};
+
+renderCards();
